@@ -4,10 +4,13 @@ import com.searchdemo.io.ConsoleIO;
 import com.searchdemo.io.IOInterface;
 
 public class SearchEngine {
-    private static IOInterface io;
+    private IOInterface io;
 
-    public static void startSearch() {
+    public SearchEngine() {
         io = ConsoleIO.getInstance();
+    }
+
+    public void startSearch() {
         String input = askForQuery();
         Searcher searcher = selectSearcher();
 
@@ -20,19 +23,19 @@ public class SearchEngine {
         displayResult(result, io);
     }
 
-    private static String askForQuery() {
+    private String askForQuery() {
         io.writeMessage("Enter query: ");
         return io.readMessage();
     }
 
-    private static Searcher selectSearcher() {
+    private Searcher selectSearcher() {
         io.writeMessage("Select search engine google or yahoo: ");
         String engine = io.readMessage();
         return SearcherFactory.getSearcher(engine);
     }
 
 
-    private static void displayResult(Result result, IOInterface io) {
+    private void displayResult(Result result, IOInterface io) {
         if (result == null) {
             return;
         }

@@ -1,9 +1,9 @@
 package com.searchdemo.search;
 
 public class Result {
-    private String title;
-    private String url;
-    private String error;
+    private final String title;
+    private final String url;
+    private final String error;
 
     public Result(String title, String url, String error) {
         this.title = title;

@@ -4,6 +4,8 @@ import com.searchdemo.utils.NetworkUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -43,9 +45,9 @@ public class GoogleSearcher implements Searcher {
         try {
             return new URL(BASE_URL + URLEncoder.encode(query, CHARSET));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(GoogleSearcher.class).error("error" , e.fillInStackTrace());
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            LoggerFactory.getLogger(GoogleSearcher.class).error("error" , e.fillInStackTrace());
         }
         return null;
     }

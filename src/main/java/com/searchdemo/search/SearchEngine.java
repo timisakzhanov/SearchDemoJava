@@ -3,10 +3,10 @@ package com.searchdemo.search;
 import com.searchdemo.io.IO;
 import com.searchdemo.io.IOInterface;
 
-public class SearchEngineDemo {
+public class SearchEngine {
     private static IOInterface io;
 
-    public static void promptForQuery() {
+    public static void startSearch() {
         io = IO.getInstance(IO.TYPE_CONSOLE).getInterface();
         String input = askForQuery();
         Searcher searcher = selectSearcher();

@@ -7,7 +7,8 @@ Application performs search request to some search engine. When starts it prompt
 
 I implemented search functionality using factory pattern. This will allow expand amount of search engines easyly.
   ```Searcher``` - interface that declares 'search' method.
-  ```GoogleSearcher``` and ```YahooSearcher``` - classes that implement Searcher interface and knoq how to generate request url and parse response.
+  ```BaseSearcher``` - abstract class implements Searcher interface and contains common methods to receive and parse data.
+  ```GoogleSearcher``` and ```YahooSearcher``` - classes that extend ```BaseSearcher``` and contain search engine specific information such as ```baseUrl``` and ```resultPattern```
   ```SearcherFactory``` - class that creates and returns required Searcher implementation
   
   

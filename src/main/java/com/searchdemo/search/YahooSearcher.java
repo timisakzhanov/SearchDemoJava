@@ -16,6 +16,16 @@ import java.net.URLEncoder;
 public class YahooSearcher implements Searcher {
     private static final String BASE_URL = "https://search.yahoo.com/search?p=";
     private static final String CHARSET = "UTF-8";
+    private static YahooSearcher instance;
+
+    private YahooSearcher() {}
+
+    public static YahooSearcher getInstance() {
+        if (instance == null) {
+            instance = new YahooSearcher();
+        }
+        return instance;
+    }
 
     @Override
     public Result search(String query) {

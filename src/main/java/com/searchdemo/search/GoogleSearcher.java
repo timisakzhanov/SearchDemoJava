@@ -13,6 +13,16 @@ import java.net.URLEncoder;
 public class GoogleSearcher implements Searcher {
     private static final String BASE_URL = "http://www.google.com/search?q=";
     private static final String CHARSET = "UTF-8";
+    private static GoogleSearcher instance;
+
+    private GoogleSearcher() {}
+
+    public static GoogleSearcher getInstance() {
+        if (instance == null) {
+            instance = new GoogleSearcher();
+        }
+        return instance;
+    }
 
     @Override
     public Result search(String query) {

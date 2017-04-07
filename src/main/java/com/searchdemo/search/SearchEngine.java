@@ -1,13 +1,13 @@
 package com.searchdemo.search;
 
-import com.searchdemo.io.IO;
+import com.searchdemo.io.ConsoleIO;
 import com.searchdemo.io.IOInterface;
 
 public class SearchEngine {
     private static IOInterface io;
 
     public static void startSearch() {
-        io = IO.getInstance(IO.TYPE_CONSOLE).getInterface();
+        io = ConsoleIO.getInstance();
         String input = askForQuery();
         Searcher searcher = selectSearcher();
 
@@ -26,15 +26,9 @@ public class SearchEngine {
     }
 
     private static Searcher selectSearcher() {
-        int engineType = -1;
-        io.writeMessage("Select engine (google - 0, yahoo - 1): ");
-        String input = io.readMessage();
-        try {
-            engineType = Integer.valueOf(input);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        return SearcherFactory.getSearcher(engineType);
+        io.writeMessage("Select search engine google or yahoo: ");
+        String engine = io.readMessage();
+        return SearcherFactory.getSearcher(engine);
     }
 
 

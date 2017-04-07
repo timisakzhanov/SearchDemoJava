@@ -32,7 +32,7 @@ public abstract class BaseSearcher implements Searcher {
         return parseResponse(document);
     }
 
-    private URL generateUrl(String query) {
+    protected URL generateUrl(String query) {
         try {
             return new URL(baseUrl + URLEncoder.encode(query, CHARSET));
         } catch (UnsupportedEncodingException e) {
@@ -43,7 +43,7 @@ public abstract class BaseSearcher implements Searcher {
         return null;
     }
 
-    private Result parseResponse(Document doc) {
+    protected Result parseResponse(Document doc) {
         Elements results = doc.select(resultPattern);
         Element first = results.first();
         if (first == null) {

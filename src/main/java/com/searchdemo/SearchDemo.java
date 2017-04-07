@@ -4,6 +4,7 @@ import com.searchdemo.search.SearchEngine;
 
 public class SearchDemo {
     public static void main(String[] args) {
-        SearchEngine.startSearch();
+        SearchEngine searchEngine = new SearchEngine();
+        searchEngine.startSearch();
     }
 }
